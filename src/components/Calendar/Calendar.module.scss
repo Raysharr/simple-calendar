@@ -1,0 +1,127 @@
+$cellSize: 40px;
+$daySelectionIndicatorSize: $cellSize - 4;
+$currentDayColor: #0e5bf314;
+$roundedRadius: 40px;
+
+.calendar {
+  width: 280px;
+  background-color: white;
+  padding-bottom: 16px;
+
+  &__navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+
+    &__header {
+      text-transform: uppercase;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 20px;
+      letter-spacing: 0.25px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+
+      &__clickable {
+        cursor: pointer;
+        color: blue;
+      }
+    }
+
+    &__button {
+      padding: 6px !important;
+    }
+
+    &__icon {
+      width: 20px !important;
+      height: 20px !important;
+      fill: blue !important;
+
+      &__down {
+        transform: rotate(90deg);
+      }
+    }
+  }
+
+  &__gridCell {
+    height: $cellSize;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    &__disabled {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+  }
+
+  &__monthGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    overflow: hidden;
+    font-size: 14px;
+
+    &__selectionIndicator {
+      height: $cellSize;
+      border-radius: $cellSize;
+      display: flex;
+      flex: 1;
+      align-items: center;
+      justify-content: center;
+
+      &__selected {
+        background-color: blue;
+        color: white;
+      }
+    }
+  }
+
+  &__dayGrid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    overflow: hidden;
+    font-size: 14px;
+
+    &__rangeSelectionIndicator {
+      width: $cellSize;
+      height: $daySelectionIndicatorSize;
+      background-color: $currentDayColor;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &__first {
+        border-top-left-radius: $roundedRadius;
+        border-bottom-left-radius: $roundedRadius;
+      }
+
+      &__last {
+        border-top-right-radius: $roundedRadius;
+        border-bottom-right-radius: $roundedRadius;
+      }
+    }
+
+    &__selectionIndicator {
+      width: $daySelectionIndicatorSize;
+      height: $daySelectionIndicatorSize;
+      border-radius: $daySelectionIndicatorSize;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &--currentDay {
+        background-color: $currentDayColor;
+      }
+
+      &--selected {
+        background-color: blue;
+        color: white;
+      }
+    }
+  }
+}
